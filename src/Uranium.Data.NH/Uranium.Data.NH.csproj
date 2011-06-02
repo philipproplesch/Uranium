@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,7 +65,9 @@
   <ItemGroup>
     <Compile Include="Conventions\CustomForeignKeyConvention.cs" />
     <Compile Include="Infrastructure\NHibernateRegistry.cs" />
-    <Compile Include="Infrastructure\RepositoryRegistry.cs" />
+    <Compile Include="Infrastructure\RepositoryRegistry.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="NHibernateRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionFactoryBuilder.cs" />

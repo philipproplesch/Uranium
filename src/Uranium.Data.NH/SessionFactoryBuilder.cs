@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Microsoft.Practices.ServiceLocation;
@@ -42,6 +43,7 @@ namespace Uranium.Data.NH
             return Fluently.Configure()
                 .Database(persistenceConfigurer)
                 .Mappings(AddImportedFluentMappings)
+                .Mappings(AddMappings)
                 .ExposeConfiguration(CreateOrUpdateSchema)
                 .BuildSessionFactory();
         }
@@ -57,6 +59,15 @@ namespace Uranium.Data.NH
             }
 
             return "ConnectionString";
+        }
+
+        private static void AddMappings(MappingConfiguration cfg)
+        {
+            var mappings = ServiceLocator.Current.GetAllInstances<IEntity>();
+            foreach (var mapping in mappings)
+            {
+                cfg.AutoMappings.Add(AutoMap.Assembly(mapping.GetType().Assembly));
+            }
         }
 
         private static void AddImportedFluentMappings(MappingConfiguration cfg)

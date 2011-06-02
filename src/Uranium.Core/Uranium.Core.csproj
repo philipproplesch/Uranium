@@ -47,10 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\IDatabaseInitializer.cs" />
+    <Compile Include="Data\IEntity.cs" />
     <Compile Include="Data\IMappedEntity.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Extensibility\IPlugin.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
+    <Compile Include="Infrastructure\Bootstrapping\GlobalExceptionTracing.cs" />
+    <Compile Include="Infrastructure\IBootstrapMember.cs" />
     <Compile Include="Infrastructure\StructureMapServiceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

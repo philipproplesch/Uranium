@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using System.Web;
+using NHibernate;
 using StructureMap.Configuration.DSL;
 
 namespace Uranium.Data.NH.Infrastructure
@@ -11,9 +12,17 @@ namespace Uranium.Data.NH.Infrastructure
                 .Singleton()
                 .Use(SessionFactoryBuilder.CreateSessionFactory);
 
-            For<ISession>()
+            if (HttpContext.Current != null)
+            {
+                For<ISession>()
                 .HttpContextScoped()
                 .Use(x => x.GetInstance<ISessionFactory>().OpenSession());
+            }
+            else
+            {
+                For<ISession>()
+                .Use(x => x.GetInstance<ISessionFactory>().OpenSession());
+            }
         }
     }
 }
