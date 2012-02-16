@@ -1,4 +1,4 @@
-namespace Uranium.Core.Data
+namespace Uranium.Core.Data.Common
 {
     public interface IEntity
     { }

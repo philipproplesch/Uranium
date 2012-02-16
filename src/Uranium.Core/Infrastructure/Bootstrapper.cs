@@ -3,6 +3,7 @@ using System.Reflection;
 using Microsoft.Practices.ServiceLocation;
 using StructureMap;
 using Uranium.Core.Data;
+using Uranium.Core.Data.Common;
 using Uranium.Core.Extensibility;
 
 namespace Uranium.Core.Infrastructure
@@ -29,8 +30,10 @@ namespace Uranium.Core.Infrastructure
 
         private static void InitializeBootstrapMembers()
         {
-            var bootstrapMembers = ServiceLocator.Current.GetAllInstances<IBootstrapMember>();
-            foreach (var bootstrapMember in bootstrapMembers)
+            var bootstrapItems = 
+                ServiceLocator.Current.GetAllInstances<IBootstrapItem>();
+
+            foreach (var bootstrapMember in bootstrapItems)
             {
                 bootstrapMember.Execute();
             }
@@ -61,9 +64,9 @@ namespace Uranium.Core.Infrastructure
                         scan.WithDefaultConventions();
                         scan.AddAllTypesOf<IEntity>();
                         scan.AddAllTypesOf<IMappedEntity>();
-                        scan.AddAllTypesOf<IDatabaseInitializer>();
+                        scan.AddAllTypesOf<IDatabaseSeeder>();
                         scan.AddAllTypesOf<IPlugin>();
-                        scan.AddAllTypesOf<IBootstrapMember>();
+                        scan.AddAllTypesOf<IBootstrapItem>();
                         scan.LookForRegistries();
                     }));
         }

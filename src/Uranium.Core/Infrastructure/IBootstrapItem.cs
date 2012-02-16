@@ -1,6 +1,6 @@
 ﻿namespace Uranium.Core.Infrastructure
 {
-    public interface IBootstrapMember
+    public interface IBootstrapItem
     {
         void Execute();
     }

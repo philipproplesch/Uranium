@@ -10,6 +10,7 @@ using Microsoft.Practices.ServiceLocation;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using Uranium.Core.Data;
+using Uranium.Core.Data.Common;
 using Uranium.Data.NH.Conventions;
 using Configuration = NHibernate.Cfg.Configuration;
 
@@ -112,12 +113,12 @@ namespace Uranium.Data.NH
 
                 var dataInitializer =
                     ServiceLocator.Current
-                        .GetAllInstances<IDatabaseInitializer>()
+                        .GetAllInstances<IDatabaseSeeder>()
                         .OrderBy(x => x.Order);
 
                 foreach (var initializer in dataInitializer)
                 {
-                    initializer.Execute();
+                    initializer.Seed();
                 }
             }
         }

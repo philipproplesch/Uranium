@@ -3,7 +3,7 @@ using Uranium.Core.Infrastructure;
 
 namespace Uranium.Mvc.Infrastructure
 {
-    public class GlobalFiltersInitialization : IBootstrapMember
+    public class GlobalFiltersInitialization : IBootstrapItem
     {
         public void Execute()
         {

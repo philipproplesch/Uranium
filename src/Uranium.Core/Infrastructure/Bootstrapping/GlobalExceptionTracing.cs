@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Uranium.Core.Infrastructure.Bootstrapping
 {
-    class GlobalExceptionTracing : IBootstrapMember
+    class GlobalExceptionTracing : IBootstrapItem
     {
         public void Execute()
         {

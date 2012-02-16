@@ -1,5 +1,6 @@
 ﻿using StructureMap.Configuration.DSL;
-using Uranium.Core.Data;
+using Uranium.Core.Data.Common;
+using Uranium.Data.NH.Repositories;
 
 namespace Uranium.Data.NH.Infrastructure
 {
@@ -7,7 +8,7 @@ namespace Uranium.Data.NH.Infrastructure
     {
         public RepositoryRegistry()
         {
-            For(typeof(IRepository<>)).Use(typeof(NHibernateRepository<>));
+            For(typeof(IRepository<,>)).Use(typeof(NHibernateRepository<>));
         }
     }
 }

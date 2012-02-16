@@ -4,7 +4,7 @@ using Uranium.Core.Infrastructure;
 
 namespace Uranium.Mvc.Infrastructure
 {
-    public class RoutesInitialization : IBootstrapMember
+    public class RoutesInitialization : IBootstrapItem
     {
         public void Execute()
         {

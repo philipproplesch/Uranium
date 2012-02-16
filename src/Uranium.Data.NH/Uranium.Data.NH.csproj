@@ -68,7 +68,8 @@
     <Compile Include="Infrastructure\RepositoryRegistry.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="NHibernateRepository.cs" />
+    <Compile Include="Mappings\EntityBaseMap.cs" />
+    <Compile Include="Repositories\NHibernateRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionFactoryBuilder.cs" />
   </ItemGroup>
@@ -81,6 +82,7 @@
       <Name>Uranium.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
